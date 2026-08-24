@@ -1,0 +1,15 @@
+# Security - NEVER upload passwords!
+.env
+
+# Virtual Environments
+credit_risk
+
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Django
+db.sqlite3
+*.log
