@@ -5,19 +5,16 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import LoanApplicationSerializer
- # or pickle, depending on what you used
 from django.conf import settings
 
 # 1. Dynamically find the artifacts folder
 artifacts_dir = os.path.join(settings.BASE_DIR, '../artifacts')
 
-# 2. Load all three files safely on both Windows and AWS Linux
+# 2. Load ALL FOUR files safely ONCE when the server starts! (Super fast)
 model = joblib.load(os.path.join(artifacts_dir, 'risk_model.pkl'))
 encoders = joblib.load(os.path.join(artifacts_dir, 'encoders.pkl'))
 feature_names = joblib.load(os.path.join(artifacts_dir, 'feature_names.pkl'))
 scaler = joblib.load(os.path.join(artifacts_dir, 'scaler.pkl')) 
-
-
 
 class PredictRiskView(APIView):
     def post(self, request):
@@ -27,19 +24,16 @@ class PredictRiskView(APIView):
 
         data = serializer.validated_data
         
-        artifacts_dir = os.path.join(settings.BASE_DIR, '../artifacts')
-
-# 2. Load all three files safely on both Windows and AWS Linux
-        model = joblib.load(os.path.join(artifacts_dir, 'risk_model.pkl'))
-        encoders = joblib.load(os.path.join(artifacts_dir, 'encoders.pkl'))
-        feature_names = joblib.load(os.path.join(artifacts_dir, 'feature_names.pkl'))
-
+        # --- Notice how we DELETED the duplicate loading here! ---
+        
         df = pd.DataFrame([data])
         for col in ["person_home_ownership", "loan_intent", "loan_grade", "cb_person_default_on_file"]:
             le = encoders[col]
             df[col] = le.transform(df[col])
 
         df = df[feature_names]
+        
+        # Now it perfectly uses the scaler loaded at the top!
         df_scaled = scaler.transform(df)
 
         risk_score = model.predict_proba(df_scaled)[0][1]
