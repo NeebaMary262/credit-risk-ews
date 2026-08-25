@@ -15,6 +15,8 @@ artifacts_dir = os.path.join(settings.BASE_DIR, '../artifacts')
 model = joblib.load(os.path.join(artifacts_dir, 'risk_model.pkl'))
 encoders = joblib.load(os.path.join(artifacts_dir, 'encoders.pkl'))
 feature_names = joblib.load(os.path.join(artifacts_dir, 'feature_names.pkl'))
+scaler = joblib.load(os.path.join(artifacts_dir, 'scaler.pkl')) 
+
 
 
 class PredictRiskView(APIView):
