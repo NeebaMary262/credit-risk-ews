@@ -5,6 +5,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import LoanApplicationSerializer
+ # or pickle, depending on what you used
+from django.conf import settings
+
+# 1. Dynamically find the artifacts folder
+artifacts_dir = os.path.join(settings.BASE_DIR, '../artifacts')
+
+# 2. Load all three files safely on both Windows and AWS Linux
+model = joblib.load(os.path.join(artifacts_dir, 'risk_model.pkl'))
+encoders = joblib.load(os.path.join(artifacts_dir, 'encoders.pkl'))
+feature_names = joblib.load(os.path.join(artifacts_dir, 'feature_names.pkl'))
+
 
 class PredictRiskView(APIView):
     def post(self, request):
@@ -13,9 +24,11 @@ class PredictRiskView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         data = serializer.validated_data
-        artifacts_dir = r"D:\credit_risk_ews\artifacts"
+        
+        artifacts_dir = os.path.join(settings.BASE_DIR, '../artifacts')
+
+# 2. Load all three files safely on both Windows and AWS Linux
         model = joblib.load(os.path.join(artifacts_dir, 'risk_model.pkl'))
-        scaler = joblib.load(os.path.join(artifacts_dir, 'scaler.pkl'))
         encoders = joblib.load(os.path.join(artifacts_dir, 'encoders.pkl'))
         feature_names = joblib.load(os.path.join(artifacts_dir, 'feature_names.pkl'))
 
