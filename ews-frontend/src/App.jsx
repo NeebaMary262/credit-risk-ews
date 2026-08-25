@@ -63,7 +63,7 @@ function App() {
 
     try {
       // Wiring the frontend to your local Django API
-      const response = await axios.post('http://127.0.0.1:8000/api/predict/', payload)
+      const response = await axios.post('/api/predict/', payload)
       setResult(response.data)
     }  catch (error) {
       if (error.response) {
