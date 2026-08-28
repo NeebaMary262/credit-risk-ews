@@ -1,4 +1,4 @@
-                                                                                               Credit Risk Early Warning System (EWS)
+                                                                          Credit Risk Early Warning System (EWS)
 
 
 
