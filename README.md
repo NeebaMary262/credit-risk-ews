@@ -21,9 +21,9 @@ Asynchronous Event-Driven Pipeline (Bulk Upload)
 
 Tech: React → Django API → Apache Kafka → PyTorch Worker (consumer.py) → PostgreSQL
 
-Flow: Django acts as a lightweight dispatcher, instantly dumping massive CSV uploads into a Kafka queue and freeing up the web server. A background PyTorch consumer processes the queue, makes neural network predictions, and saves the results to PostgreSQL. The React frontend dynamically polls the database and provides a live progress bar until the CSV is ready for download.
+Flow: Django acts as a lightweight dispatcher, instantly dumping massive CSV uploads into a Kafka queue and freeing up the web server. A background PyTorch consumer processes the queue, makes neural network predictions, and saves the results to PostgreSQL. The React frontend dynamically polls the database and provides a live progress bar until the CSV is ready for download
 
-🛠️ Technology Stack
+   Technology Stack
 Frontend: React.js, Vite, Axios
 
 Backend: Django, Django REST Framework (DRF)
