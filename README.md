@@ -34,15 +34,3 @@ Message Broker: Apache Kafka (Dockerized)
 
 Database: PostgreSQL
 
-Deployment: AWS EC2, Nginx, Gunicorn, systemd
-credit_risk_ews/
-├── artifacts/              # Contains shared ML artifacts (scaler.pkl, encoders.pkl, model.pkl, .pth)
-├── data/                   # Contains raw historical training data
-├── ews-frontend/           # React.js application
-├── src/
-│   ├── ews_backend/        # Main Django configuration & settings.py
-│   ├── risk_model/         # Django app (models, views, urls, serializers)
-│   ├── consumer.py         # PyTorch background worker (Kafka consumer)
-│   ├── train_pytorch.py    # Offline ML training script
-│   └── manage.py
-└── docker-compose.yml      # Kraft local containers
