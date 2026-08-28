@@ -1,8 +1,4 @@
-                                                                          Credit Risk Early Warning System (EWS)
-
-
-
-
+                                                                         Credit Risk Early Warning System (EWS)
 An enterprise-grade, dual-architecture machine learning pipeline for assessing credit risk. This system handles real-time single applicant predictions using scikit-learn, and highly scalable asynchronous bulk predictions using PyTorch and Apache Kafka.
 
 Live Production Access (AWS)
@@ -37,4 +33,3 @@ Machine Learning: PyTorch (Deep Learning), Scikit-Learn (Traditional ML), Joblib
 Message Broker: Apache Kafka (Dockerized)
 
 Database: PostgreSQL
-
