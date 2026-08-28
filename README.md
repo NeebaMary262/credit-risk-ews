@@ -4,7 +4,7 @@ An enterprise-grade, dual-architecture machine learning pipeline for assessing c
 Live Production Access (AWS)
 The application is unified behind a single AWS Elastic IP using Nginx as a reverse proxy. Both the frontend web interface and the backend API are accessible via this single entry point.
 
-Production URL: [http://54.123.45.67](http://54.123.45.67) (Replace with your actual AWS Elastic IP)
+Production URL: http://16.170.237.238/ (Replace with your actual AWS Elastic IP)
 
 
 
