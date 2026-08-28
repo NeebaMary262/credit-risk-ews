@@ -75,6 +75,7 @@ button:hover {
   opacity: 0.9;
 }
 
+
 .result-box {
   margin-top: 25px;
   padding: 20px;
@@ -94,4 +95,68 @@ button:hover {
   background-color: #fee2e2;
   color: #991b1b;
   border: 1px solid #ef4444;
+}
+/* Match the dropdown to your inputs */
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Tab Navigation Styles */
+.tab-container {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  color: #666;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 0;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+  opacity: 1;
+  color: #007BFF;
+}
+
+.tab-btn.active {
+  color: #1E3A8A;
+  font-weight: bold;
+  border-bottom: 3px solid #C026D3; /* Magenta accent for active tab */
+}
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.btn-ready-blink {
+  animation: pulse-green 2s infinite;
+  background-color: #10B981 !important;
+  color: white !important;
+  font-weight: bold;
+  border: 2px solid #059669;
+  transition: all 0.3s ease;
+}
+
+.btn-ready-blink:hover {
+  animation: none;
+  transform: scale(1);
 }
